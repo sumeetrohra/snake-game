@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Snake from './Snake';
-import Fruit from './Fruit';
+import Snake from '../Snake';
+import Fruit from '../Fruit';
 
 const getRandomCoordinates = () => {
     let min = 1;

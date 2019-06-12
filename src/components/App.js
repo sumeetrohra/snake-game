@@ -1,9 +1,17 @@
 import React from 'react';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import { Router, Route, Switch } from 'react-router-dom';
 
+import history from './history';
 import './App.css';
-import Game from './Game';
 import { firebaseConfig } from '../firebase';
+
+import Login from './screens/Login';
+import Game from './screens/Game';
+import LeaderBoard from './screens/LeaderBoard';
+import PersonalScores from './screens/PersonalScores';
+import Header from './Header';
 
 class App extends React.Component {
 	// Firebase and Router setup
@@ -24,7 +32,17 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<Game />
+				<Router history={history}>
+					<div>
+						<Header />
+						<Switch>
+							<Route path="/" exact component={Login} />
+							<Route path="/game" exact component={Game} />
+							<Route path="/best-scores" exact component={LeaderBoard} />
+							<Route path="/personal-scores" exact component={PersonalScores} />
+						</Switch>
+					</div>
+				</Router>
 			</div>
 		);
 	}
