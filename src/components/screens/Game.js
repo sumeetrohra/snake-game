@@ -2,6 +2,7 @@ import React from 'react';
 
 import Snake from '../Snake';
 import Fruit from '../Fruit';
+import Header from '../Header';
 
 const getRandomCoordinates = () => {
     let min = 1;
@@ -19,7 +20,7 @@ const INITIAL_STATE = {
         [2, 0],
     ],
     velocity: 200,
-    gameStatus: 'PLAY',
+    gameStatus: 'PLA',
     score: 0,
     scoreMultiplier: 1
 }
@@ -28,7 +29,6 @@ class Game extends React.Component {
     state = INITIAL_STATE;
 
     componentDidMount() {
-
         if (this.state.gameStatus === 'PLAY') {
             setInterval(this.moveSnake, this.state.velocity);
             document.onkeydown = this.onArrowKeyPress;
@@ -40,6 +40,10 @@ class Game extends React.Component {
         this.checkBorders();
         this.checkCollision();
         this.eatFruit();
+    }
+
+    componentWillUnmount() {
+        this.setState({ gameStatus: 'STOP' });
     }
 
     onArrowKeyPress = (e) => {
@@ -149,6 +153,7 @@ class Game extends React.Component {
     render() {
         return (
             <div>
+                <Header />
                 <div className="board">
                     <Snake snakeDots={this.state.snakeDots} />
                     <Fruit dot={this.state.fruit} />

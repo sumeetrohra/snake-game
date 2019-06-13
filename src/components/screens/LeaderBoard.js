@@ -1,9 +1,15 @@
 import React from 'react';
 
+import Header from '../Header';
+
 class LeaderBoard extends React.Component {
     render() {
+        console.log(this.props.match.path);
         return (
-            <div>LeaderBoard</div>
+            <div>
+                <Header />
+                LeaderBoard
+                </div>
         );
     }
 }

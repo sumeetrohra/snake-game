@@ -1,9 +1,14 @@
 import React from 'react';
 
+import Header from '../Header';
+
 class PersonalScores extends React.Component {
     render() {
         return (
-            <div>PersonalScores</div>
+            <div>
+                <Header />
+                PersonalScores
+                </div>
         );
     }
 }

@@ -1,11 +1,20 @@
 import React from 'react';
+import { Button, Icon } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 
-class Login extends React.Component {
-    render() {
-        return (
-            <div>Login</div>
-        );
-    }
+import { signIn } from '../../actions';
+
+
+const Login = (props) => {
+    console.log(props);
+    return (
+        <div className='login-button-center'>
+            <h2>Welcome to Snake Game<br/>Please Login to Continue</h2>
+            <Button color='google plus' size='huge' onClick={() => props.signIn()}>
+                <Icon name='google' /> Login With Google
+            </Button>
+        </div>
+    );
 }
 
-export default Login;
+export default connect(null, { signIn })(Login);

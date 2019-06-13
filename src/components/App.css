@@ -26,3 +26,8 @@
 .score-display {
     text-align: center;
 }
+
+.login-button-center {
+    text-align: center;
+    padding: 20%;
+}
