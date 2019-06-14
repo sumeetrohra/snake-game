@@ -18,3 +18,8 @@ export const RIGHT = 'RIGHT';
 export const LEFT = 'LEFT';
 export const UP = 'UP';
 export const DOWN = 'DOWN';
+
+// header constants
+export const GAME = 'GAME';
+export const LEADER_BOARD = 'LEADER_BOARD';
+export const MY_SCORES = 'MY_SCORES';

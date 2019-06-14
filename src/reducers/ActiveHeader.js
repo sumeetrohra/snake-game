@@ -1,9 +1,12 @@
 import {
     ACTIVE_HEADER
 } from '../actions/types';
+import {
+    GAME
+} from '../constants';
 
 const INITIAL_STATE = {
-    active: 'Game'
+    active: GAME
 }
 
 export default (state = INITIAL_STATE, action) => {

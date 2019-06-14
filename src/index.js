@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
+import firebase from 'firebase/app';
 
 import App from './components/App';
 import reducers from './reducers';
+import { firebaseConfig } from './firebase';
+
+firebase.initializeApp(firebaseConfig);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(

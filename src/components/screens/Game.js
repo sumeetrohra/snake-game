@@ -17,12 +17,12 @@ import {
     UP,
     DOWN
 } from '../../constants';
+import { levels } from '../../gameConfig';
 import Snake from '../Snake';
 import Fruit from '../Fruit';
 import Header from '../Header';
 
 const getRandomCoordinates = (ownProps) => {
-    console.log(ownProps);
     let min = 1;
     let max = 98;
     let x = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
@@ -58,6 +58,9 @@ class Game extends React.Component {
     a = null;
 
     componentDidMount() {
+        const { difficulty } = this.props;
+        const { velocity, scoreMultiplier } = levels[difficulty];
+        this.setState({ velocity, scoreMultiplier });
         if (this.props.status === PLAY) {
             this.startGame();
         }
@@ -70,7 +73,6 @@ class Game extends React.Component {
         if (this.props.status !== prevProps.status && this.props.status === PAUSE) {
             clearInterval(this.snakeGameInterval);
         }
-        console.log(this.state.velocity);
         this.checkBorders();
         this.checkCollision();
         this.eatFruit();
@@ -194,11 +196,10 @@ class Game extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <Header />
-                <Button.Group className="center aligned row">
+                <Button.Group size='huge' color='red'>
                     <Button onClick={() => this.props.gameStatus(PLAY)}>Play</Button>
                     <Button.Or />
                     <Button onClick={() => this.props.gameStatus(PAUSE)}>Pause</Button>
@@ -216,7 +217,7 @@ class Game extends React.Component {
 }
 
 const mapStateToProps = ({ status }) => {
-    return { status: status.status };
+    return { status: status.status, difficulty: status.difficulty };
 }
 
 export default connect(mapStateToProps, { gameStatus, scoreUpdate, gameState })(Game);

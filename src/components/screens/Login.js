@@ -6,7 +6,6 @@ import { signIn } from '../../actions';
 
 
 const Login = (props) => {
-    console.log(props);
     return (
         <div className='login-button-center'>
             <h2>Welcome to Snake Game<br />Please Login to Continue</h2>

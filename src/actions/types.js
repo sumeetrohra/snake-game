@@ -6,3 +6,5 @@ export const ACTIVE_HEADER = 'active_header';
 export const GAME_STATUS = 'game_status';
 export const SCORE_UPDATE = 'score_update';
 export const GAME_STATE_UPDATE = 'game_state_update';
+export const SET_DIFFICULTY = 'SET_DIFFICULTY';
+export const FETCH_DATA = 'FETCH_DATA';

@@ -11,7 +11,6 @@ import LevelSelect from './LevelSelect';
 import Final from './Final';
 
 class GameContainer extends React.Component {
-    // this container renders game based on the state of game, 1: level select - here we choose between easy, medium and hard, 2: game play, 3: final - here we show the score and ask for play again or reset
     renderUpdate() {
         if (this.props.gameState === LEVEL_SELECT) {
             return <LevelSelect />;
@@ -34,4 +33,4 @@ const mapStateToProps = ({ status }) => {
     return { score: score, gameState: gameState };
 }
 
-export default connect(mapStateToProps, null)(GameContainer);
+export default connect(mapStateToProps)(GameContainer);

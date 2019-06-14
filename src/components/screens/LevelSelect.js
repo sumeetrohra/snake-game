@@ -2,7 +2,10 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-import { gameState } from '../../actions';
+import {
+    gameState,
+    gameDifficulty
+} from '../../actions';
 import {
     GAME_PLAY,
     EASY,
@@ -13,7 +16,7 @@ import Header from '../Header';
 
 class LevelSelect extends React.Component {
     handleOnClick = (difficulty) => {
-        console.log(difficulty);
+        this.props.gameDifficulty(difficulty);
         this.props.gameState(GAME_PLAY);
     }
 
@@ -34,4 +37,4 @@ class LevelSelect extends React.Component {
     }
 }
 
-export default connect(null, { gameState })(LevelSelect);
+export default connect(null, { gameState, gameDifficulty })(LevelSelect);

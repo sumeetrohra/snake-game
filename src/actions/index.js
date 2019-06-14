@@ -1,6 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 import store from 'store';
+import _ from 'lodash';
 
 import history from '../components/history';
 
@@ -10,7 +12,9 @@ import {
     ACTIVE_HEADER,
     GAME_STATUS,
     SCORE_UPDATE,
-    GAME_STATE_UPDATE
+    GAME_STATE_UPDATE,
+    SET_DIFFICULTY,
+    FETCH_DATA
 } from './types';
 
 const _handleSignIn = (dispatch, details) => {
@@ -87,4 +91,22 @@ export const gameState = (gameState) => {
         type: GAME_STATE_UPDATE,
         payload: gameState
     };
+};
+
+// for easy medium and hard
+export const gameDifficulty = (difficulty) => {
+    return {
+        type: SET_DIFFICULTY,
+        payload: difficulty
+    };
+};
+
+export const fetchData = () => async dispatch => {
+    firebase.database().ref('/scores')
+    .on('value', (snapshot) => {
+        dispatch({
+            type: FETCH_DATA,
+            payload: _.values(snapshot.val())
+        });
+    });
 };

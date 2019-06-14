@@ -1,11 +1,13 @@
 import {
     GAME_STATUS,
     SCORE_UPDATE,
-    GAME_STATE_UPDATE
+    GAME_STATE_UPDATE,
+    SET_DIFFICULTY
 } from '../actions/types';
 import {
     STOP,
-    LEVEL_SELECT
+    LEVEL_SELECT,
+    EASY
 } from '../constants';
 
 // states: LEVEL_SELECT, GAME_PLAY, FINAL
@@ -15,6 +17,7 @@ const INITIAL_STATE = {
     status: STOP,
     score: 0,
     gameState: LEVEL_SELECT,
+    difficulty: EASY
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -27,6 +30,9 @@ export default (state = INITIAL_STATE, action) => {
 
         case GAME_STATE_UPDATE:
             return { ...state, gameState: action.payload };
+
+        case SET_DIFFICULTY:
+            return { ...state, difficulty: action.payload };
 
         default:
             return state;
