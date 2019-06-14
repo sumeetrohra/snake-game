@@ -10,13 +10,13 @@ import 'semantic-ui-css/semantic.min.css'
 import { firebaseConfig } from '../firebase';
 
 import Login from './screens/Login';
-import Game from './screens/Game';
+import GameContainer from './screens/GameContainer';
 import LeaderBoard from './screens/LeaderBoard';
 import PersonalScores from './screens/PersonalScores';
 
 class App extends React.Component {
 	// Firebase and Router setup
-	// ToDo: scores database, leaderboard and personal scores page, play pause and stop buttons, three gameplay levels: easy, score multiplier 0.5, velocity 250, decrement 10, med: 1, 200, 10, hard: 1.5, 160 20, half tail at 2000 score, pass the props of path from screens to header using redux to help for the active item
+	// ToDo: scores database, leaderboard and personal scores page, three gameplay levels: easy, score multiplier 1, velocity 200, med: 2.5, 150, hard: 5, 70 half tail at 2000 score
 
 	componentDidMount() {
 		firebase.initializeApp(firebaseConfig);
@@ -24,12 +24,12 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<Container>
+			<Container textAlign='center'>
 				<Router history={history}>
 					<div>
 						<Switch>
 							<Route path="/" exact component={Login} />
-							<Route path="/game" exact component={Game} />
+							<Route path="/game" exact component={GameContainer} />
 							<Route path="/best-scores" exact component={LeaderBoard} />
 							<Route path="/personal-scores" exact component={PersonalScores} />
 						</Switch>

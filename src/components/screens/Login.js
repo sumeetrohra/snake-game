@@ -9,7 +9,7 @@ const Login = (props) => {
     console.log(props);
     return (
         <div className='login-button-center'>
-            <h2>Welcome to Snake Game<br/>Please Login to Continue</h2>
+            <h2>Welcome to Snake Game<br />Please Login to Continue</h2>
             <Button color='google plus' size='huge' onClick={() => props.signIn()}>
                 <Icon name='google' /> Login With Google
             </Button>
@@ -17,4 +17,8 @@ const Login = (props) => {
     );
 }
 
-export default connect(null, { signIn })(Login);
+const mapStateToProps = ({ auth }) => {
+    return { uid: auth.uid };
+}
+
+export default connect(mapStateToProps, { signIn })(Login);

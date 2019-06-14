@@ -1,6 +1,6 @@
 .board {
     position: relative;
-    margin: 50px auto;
+    margin: 20px auto;
     width: 400px;
     height: 400px;
     border: 2px solid black;
@@ -28,6 +28,5 @@
 }
 
 .login-button-center {
-    text-align: center;
-    padding: 20%;
+    padding: 15%;
 }
